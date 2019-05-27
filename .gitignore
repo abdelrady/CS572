@@ -1,3 +1,6 @@
+# google drive
+*.ini
+
 # Logs
 logs
 *.log
