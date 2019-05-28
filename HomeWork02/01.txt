@@ -1,0 +1,21 @@
+1- setTimeout() vs setImmediate()
+	setTimeout is simply like calling the function after delay has finished. function is queued so that it is executed after all the executing and currently queued eventhandlers finish first. setTimeout(,0) essentially means execute after all current functions in the present queue get executed.
+
+	setImmediate is similar in this regard except that it doesn’t use queue of functions. It checks queue of I/O eventhandlers. If all I/O events in the current snapshot are processed, it executes the callback. It queues them immedieately after the last I/O handler somewhat like process.nextTick. So it is faster.
+
+	Also (setTimeout,0) will be slow because it will check the timer at least once before executing. At times it can be twice as slow.
+
+2- process.nexttick() vs setimmediate()
+	Use setImmediate if you want to queue the function behind whatever I/O event callbacks that are already in the event queue. Use process.nextTick to effectively queue the function at the head of the event queue so that it executes immediately after the current function completes.
+
+3- List 10 core node modules:
+	http -> To make Node.js act as an HTTP server
+	path -> To handle file paths
+	stream -> To handle streaming data
+	string_decoder -> To decode buffer objects into strings
+	v8 -> To access information about V8 (the JavaScript engine)
+	crypto -> To handle OpenSSL cryptographic functions
+	dns	-> To do DNS lookups and name resolution functions
+	events -> To handle events
+	querystring -> To handle URL query strings
+	buffer -> To handle binary data
