@@ -25,7 +25,7 @@ subject.subscribe(ctx => {
     readStream.on("open", () => {
         readStream.pipe(ctx.res);
     });
-    readStream.on("error", err => res.end(err));
+    readStream.on("error", err => ctx.res.end(err));
 })
 
 app = http.createServer((req, res) => {
