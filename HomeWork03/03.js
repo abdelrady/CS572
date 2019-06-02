@@ -15,6 +15,7 @@ subject.subscribe(ctx => {
 
 subject.subscribe(ctx => {
     if (ctx.req.url != "/async") return;
+    // fs.readFile(filePath).pipe(ctx.res);
     fs.readFile(filePath,
         (err, buffer) => err ? ctx.res.status(404).end("not found") : ctx.res.end(buffer));
 })

@@ -22,15 +22,15 @@ const getFullUrl = function (req, query) {
   });
 }
 
-app.get("/", (req, res) => {
-    const url = apiUrl + (req.query.page || 0);
-    from(axios.get(url)).pipe(shareReplay(1))
+app.get("/users/:page", (req, res) => {
+    const pageIndex = parseInt(req.query.page || req.params.page || 0);
+    from(axios.get(apiUrl + pageIndex)).pipe(shareReplay(1))
     .subscribe(apiRes=>{
         // const links = `<${getFullUrl(req, {page: 0})}>; rel="first",\n<${getFullUrl(req, {page: parseInt(req.query.page || 0) + 1})}>; rel="next"`;
         // console.log(links);
         res
             .set('Cache-Control', 'private, max-age=86400')
-            .set("Link", `<${getFullUrl(req, {page: parseInt(req.query.page || 0) + 1})}>; rel="next"`)
+            .set("Link", `<${getFullUrl(req, {page: pageIndex + 1})}>; rel="next"`)
             // .set('Link', links);
             .json(apiRes.data);
     })

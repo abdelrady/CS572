@@ -1,0 +1,25 @@
+GET http://localhost:8080/grades
+
+###
+
+GET http://localhost:8080/grades/1
+
+###
+
+GET http://localhost:8080/grades/0
+
+###
+
+POST http://localhost:8080/grades HTTP/1.1
+content-type: application/json
+
+{"id": 2, "name": "Abdelrady Tantawy", "grade": 100, "course": "CS572"}
+###
+
+DELETE http://localhost:8080/grades/1 HTTP/1.1
+
+###
+
+DELETE http://localhost:8080/grades/0 HTTP/1.1
+
+###
