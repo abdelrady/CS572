@@ -1,0 +1,29 @@
+GET http://localhost:8080/lectures
+
+###
+
+GET http://localhost:8080/lectures/15
+
+###
+
+GET http://localhost:8080/lectures/0
+
+###
+
+GET http://localhost:8080/lectures/search/js
+
+###
+
+POST http://localhost:8080/lectures HTTP/1.1
+content-type: application/json
+
+{"_id": "15", "course": "CS572", "lecture": "nodejs"}
+###
+
+DELETE http://localhost:8080/lectures/15 HTTP/1.1
+
+###
+
+DELETE http://localhost:8080/lectures/0 HTTP/1.1
+
+###
