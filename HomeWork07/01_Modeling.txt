@@ -1,0 +1,11 @@
+Students
+	Id: uniqueid
+	Name: string
+	contacts: []
+Books
+	ISBN: string
+	Authors: [auther_id, name]
+	Keywords: []
+	Borrowers: [{student_id, return_date, book_date}]
+
+	
