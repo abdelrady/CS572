@@ -1,0 +1,8 @@
+> db.zipcodes.aggregate({$match: {state: "WA"}}, {$group: {_id: "$state", zipcodes: {$addToSet: "$_id"}}})
+
+> db.zipcodes.aggregate([{$match: {pop: {$lt: 5000}}}, {$project: {_id: 0, zipcode: "$_id"}}])
+
+> db.zipcodes.aggregate([{$group: {_id: {"state": "$state", "city": "$city"}, zipCodesCount: {$sum: 1}}}, {$match: {"zipCodesCount": {$gt: 1}}}, {$project: {_id: 0, state: "$_id.state", city: "$_id.city", zipCodesCount: "$zipCodesCount"}}, {$sort: {'state': -1, 'city': 1}}])
+
+> db.zipcodes.aggregate([{$group: {_id: {"state": "$state", "city": "$city"}, population: {$sum: "$pop"}}}, {$sort: {"_id.state": -1, population: 1}}, {$group: {_id: {"state": "$_id.state"}, city: {$first: "$_id.city"}, pop: {$first: "$population"}}}, {$project: {_id: 0, state: "$_id.state", city: "$city", pop: "$pop"}}])
+

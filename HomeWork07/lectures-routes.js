@@ -19,7 +19,9 @@ router.get(`${path}/:id`, async (req, res, next) => {
 });
 
 router.get(`${path}/search/:q`, async (req, res, next) => {
-    const lectures = await req.db.collection("lectures").find({ "lecture": {$regex : `.*${req.params.q}.*`} }).toArray();
+    const lectures = await req.db.collection("lectures")
+    .find({ "lecture": {$regex : `.*${req.params.q}.*`} })
+    .toArray();
     res.json(lectures);
 });
 
