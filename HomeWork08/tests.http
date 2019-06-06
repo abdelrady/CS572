@@ -1,0 +1,29 @@
+
+POST http://localhost:8080/locations/add HTTP/1.1
+content-type: application/json
+
+{"name": "Rec Center", "category": "Recreation/Lesiure", "location": [-91.964252,41.0136739]}
+###
+
+POST http://localhost:8080/locations/add HTTP/1.1
+content-type: application/json
+
+[{"name": "Walmart Supercenter", "category": "Shopping", "location": [-92.0038778, 41.0063319]},
+{"name": "Pizza Hut", "category": "Food/Restaurants", "location": [-91.9887933, 41.0051336]},
+{"name": "McDonald's", "category": "Food/Restaurants", "location": [-91.9887933, 41.0051336]},
+{"name": "Fairfield Public Library", "category": "Public", "location": [-91.9633878, 41.0057055]},
+{"name": "Everybody's Whole Foods", "category": "Shopping", "location": [-91.964252, 41.0136739]},
+{"name": "Boom Fitness", "category": "Recreation/Lesiure", "location": [-91.964252, 41.0136739]},
+{"name": "Fairfield True Value", "category": "Shopping", "location": [-91.9751016,41.0075119]},
+{"name": "Hy-Vee", "category": "Shopping", "location": [-91.9846718,41.0077062]},
+{"name": "Dollar Tree", "category": "Shopping", "location": [-91.9710998,41.0064958]}]
+
+###
+# db.surroundings.createIndex({location: '2d'})
+GET http://localhost:8080/locations/find/Shopping/Whole
+
+###
+GET http://localhost:8080/locations/find/Shopping/Tr
+
+###
+GET http://localhost:8080/locations/find/Shopping/

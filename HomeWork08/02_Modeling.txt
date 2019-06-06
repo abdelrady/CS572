@@ -1,0 +1,15 @@
+Students
+	Id: uniqueid
+	Name: string
+	contacts: []
+Books
+	ISBN: string
+	Authors: [auther_id, name]
+	Keywords: []
+	Borrowers: [{student_id, return_date, book_date}]
+
+	
+Indexes:
+	create an index on keywords property (array) to make search by keyword faster
+	Another index on Borrowers.return_date property to make it easy to find borrowed books by due date
+	
