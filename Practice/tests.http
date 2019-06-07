@@ -1,0 +1,19 @@
+GET http://localhost:8080/cars
+
+###
+
+POST http://localhost:8080/cars/5/reserve HTTP/1.1
+content-type: application/json
+
+{"driver_name" : "Rady","driver_license" : "A4444","rental_start_date" : "2018-05-29T16:18:35.634Z","rental_end_date" : "2018-06-02T16:18:35.634Z"}
+###
+
+Patch http://localhost:8080/cars/5/reserve/5cfabd9b82851b217c937f2f HTTP/1.1
+content-type: application/json
+
+{"number_of_days" : 5,"end_mileage" : 12000}
+###
+
+DELETE http://localhost:8080/cars/5/reserve/5cfabd9b82851b217c937f2f HTTP/1.1
+
+###

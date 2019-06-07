@@ -18,6 +18,7 @@ app
     .use(logger("common", { stream: logFileStream }))
     .use(helmet())
     .use(express.json())
+    .use(express.urlencoded())
     .use(async (req, res, next) => {
         if (!db) {
             await client.connect()
@@ -27,18 +28,20 @@ app
         next();
     })
 
-app
-    .post("*", (req, res, next) => {
-        try {
-            JSON.parse(JSON.stringify(req.body));
-            next();
-        }
-        catch (err) {
-            res.status(506).send("Invalid JSON body received!");
-        }
-    })
+// app
+//     .post("*", (req, res, next) => {
+//         try {
+//             JSON.parse(JSON.stringify(req.body));
+//             next();
+//         }
+//         catch (err) {
+//             res.status(506).send("Invalid JSON body received!");
+//         }
+//     })
 
-app.use(grades);
-app.get("/", (req, res, next) => res.redirect("/grades"));
+app.post("/url/test", (req, res, next) => {
+    res.json(req.body);
+});
+app.use("/lectures", grades);
 
 app.listen(8080, () => console.log("Listening on 8080."))

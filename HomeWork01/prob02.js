@@ -14,8 +14,10 @@ const callWithPromises = () => new Promise(function (resolve, reject) {
 const callWithAsyncAwait = async () => await fetch(url).then(d=>d.json()).then(extractInfo);
 
 const callWithRxJs = () => of(url)
-                            .pipe(flatMap((r)=>from(fetch(r).then(d => d.json()))))
-                            .subscribe(res=>console.log(`Results From RxJs: ${JSON.stringify(extractInfo(res))}`));
+.pipe(flatMap((r)=>from(fetch(r, {mode: "cors"}))))
+.subscribe(res=>console.log(res));
+// .pipe(flatMap((r)=>from(fetch(r).then(d => d.json()))))
+// .subscribe(res=>console.log(`Results From RxJs: ${JSON.stringify(extractInfo(res))}`));
 
 let app = {
     usePromises: function () {
