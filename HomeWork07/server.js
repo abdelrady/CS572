@@ -28,17 +28,6 @@ app
         next();
     })
 
-// app
-//     .post("*", (req, res, next) => {
-//         try {
-//             JSON.parse(JSON.stringify(req.body));
-//             next();
-//         }
-//         catch (err) {
-//             res.status(506).send("Invalid JSON body received!");
-//         }
-//     })
-
 app.post("/url/test", (req, res, next) => {
     res.json(req.body);
 });

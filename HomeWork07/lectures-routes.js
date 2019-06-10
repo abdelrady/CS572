@@ -6,8 +6,9 @@ const path = "/lectures";
 router.get("/", async (req, res, next) => {
     const page = ((req.query.page || 1) - 1) * 10;
     const lectures = await req.db.collection("lectures")
-        .find({}, { 'skip': page, 'limit': 5 }).toArray()
-        //.sort({})
+        .find({}, { 'skip': page, 'limit': 5 })
+        .sort({'course': 1, lecture: -1})
+        .toArray()
     res.json(lectures);
 });
 

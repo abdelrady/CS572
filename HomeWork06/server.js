@@ -11,7 +11,7 @@ const logFileStream = fs.createWriteStream(path.join(__dirname, "access.log"), {
 const app = express();
 
 app
-    //.use(cors())
+    .use(cors())
     .use(logger("common", {stream: logFileStream}))
     .use(helmet())
     .use(express.json())

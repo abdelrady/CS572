@@ -17,7 +17,7 @@ GET http://localhost:8080/lectures/search/js
 POST http://localhost:8080/lectures HTTP/1.1
 content-type: application/json
 
-{"_id": "15", "course": "CS572", "lecture": "nodejs"}
+{"_id": "18", "course": "CS510", "lecture": "xest"}
 ###
 
 DELETE http://localhost:8080/lectures/15 HTTP/1.1

@@ -11,7 +11,7 @@ router.get("/", async (req, res, next)=> {
 
 router.post("/:id/reserve", async(req, res, next)=>{
     console.log(req.params.id);
-    const car = await req.db.findOne({"_id": parseInt(req.params.id)});
+    const car = await req.db.findOne({"_id": parseInt(req.params.id)}, {projection: {rental_details: 1}});
     console.log(car);
     const lastMilage = car.rental_details[car.rental_details.length -1].end_mileage || 0;
     const rid = new mongo.ObjectID();
