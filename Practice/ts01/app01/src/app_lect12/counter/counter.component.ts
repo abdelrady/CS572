@@ -31,5 +31,4 @@ export class CounterComponent implements OnInit {
     this.counter--;
     this.counterChange.emit(this.counter)
   }
-
 }
