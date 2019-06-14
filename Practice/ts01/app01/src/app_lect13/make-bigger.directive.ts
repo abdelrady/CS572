@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Renderer2, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[makeBigger]',
@@ -13,6 +13,10 @@ export class MakeBiggerDirective {
   }
 
   ngOnInit() {
+    
+  }
+
+  @HostListener('dblclick') hostDbClick(){
     this.renderer.listen(this.elem.nativeElement, 'click', (event) => {
       this.fontSize += 2;
       console.log(this.fontSize);
