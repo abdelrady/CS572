@@ -1,0 +1,13 @@
+
+POST http://localhost:8080/api/signup HTTP/1.1
+content-type: application/json
+
+{"userData":{"firstname":"Abdelrady","lastname":"Tantawy","email":"atantawy@mum.edu"},"password":"123","confirmpassword":"123"}
+###
+
+
+POST http://localhost:8080/api/login HTTP/1.1
+content-type: application/json
+
+{"password":"123","email":"atantawy@mum.edu"}
+

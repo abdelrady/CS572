@@ -1,3 +1,7 @@
+# keys
+keys-config.json
+*.config
+
 # google drive
 *.ini
 

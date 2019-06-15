@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
-import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   template: `Root App<br/>
-    <a [routerLink]="['users']">Users</a><br/><br/>
-    <router-outlet></router-outlet>
-  `
+  <a [routerLink]="['login']">Login</a><br/><br/>
+  <a [routerLink]="['register']">Register</a><br/><br/>
+  <router-outlet class="container"></router-outlet>
+`,
+styleUrls: [
+  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
+]
 })
 export class AppComponent {
-  title = 'app01';
-
-  constructor(private dataService : DataService){
-      dataService.getOnlineData();
-  }
-
+  title = 'Lab 14 app';
 }

@@ -1,30 +1,41 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
-import { DataService } from './data.service';
-import { RouterModule } from '@angular/router'
-import { ErrorComponent } from './error.component';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ErrorComponent } from './error/error.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProtectedComponent } from './protected/protected.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const app_routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: AppComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'error', component: ErrorComponent },
-  { path: 'users', loadChildren: () => import('./users/users.module').then(m => m.UsersModule) },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: SignupComponent },
   { path: '**', redirectTo: 'home' }];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorComponent
+    HomeComponent,
+    ErrorComponent,
+    LoginComponent,
+    SignupComponent,
+    ProtectedComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(app_routes)
   ],
-  providers: [DataService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

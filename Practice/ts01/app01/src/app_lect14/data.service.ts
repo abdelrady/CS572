@@ -22,7 +22,6 @@ export class DataService {
   getCachedData(){
     return of(JSON.parse(localStorage.getItem(this.dataKey)))
     .pipe(shareReplay(1));
-    //.pipe((d)=>JSON.parse(d))
   }
 
   getUser(uuid){
@@ -35,4 +34,10 @@ export class DataService {
       observer.next(exist);
     })
   }
+
+  // Another way
+  // async getUser(uuid){
+  //   let data = await (this.getCachedData().toPromise());
+  //   return data.results.filter(u=>u.login.uuid==uuid).length > 0;
+  // }
 }
