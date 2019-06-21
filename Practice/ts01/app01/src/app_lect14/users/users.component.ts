@@ -4,7 +4,7 @@ import { DataService } from '../data.service';
 @Component({
   selector: 'app-users',
   template: `<ul>
-    <li *ngFor="let user of (users | async).results">
+    <li *ngFor="let user of (users | async).results" *ngIf="(users | async)?.length">
       <a [routerLink]="['userDetails', user.login.uuid]">{{user.name.first}}</a>
     </li>
   </ul>`
@@ -16,7 +16,8 @@ export class UsersComponent implements OnInit {
   constructor(private dataService : DataService) { }
 
   ngOnInit() {
-    this.users = this.dataService.getCachedData();
+    // this.users = this.dataService.getCachedData();
+    this.users = this.dataService.getData();
   }
 
 }

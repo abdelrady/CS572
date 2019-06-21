@@ -3,6 +3,7 @@ const fs = require("fs");
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
+
 const saltRounds = 10;
 //http://travistidwell.com/jsencrypt/demo/
 let privateKey = fs.readFileSync("keys-private.config", 'utf8');

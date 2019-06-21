@@ -8,27 +8,32 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
+
   url = "https://randomuser.me/api/?results=10";
   dataKey = 'users';
 
-  constructor(private http : HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  getOnlineData(){ 
-      this.http.get(this.url).subscribe((data)=>{
-          localStorage.setItem('users', JSON.stringify(data));
-      });
+  getData(): any {
+    this.http.get(this.url);
   }
 
-  getCachedData(){
+  getOnlineData() {
+    this.http.get(this.url).subscribe((data) => {
+      localStorage.setItem('users', JSON.stringify(data));
+    });
+  }
+
+  getCachedData() {
     return of(JSON.parse(localStorage.getItem(this.dataKey)))
-    .pipe(shareReplay(1));
+      .pipe(shareReplay(1));
   }
 
-  getUser(uuid){
+  getUser(uuid) {
     return Observable.create((observer) => {
-      let exist = JSON.parse(localStorage.getItem(this.dataKey)).results.filter(u=>u.login.uuid==uuid).length > 0;
+      let exist = JSON.parse(localStorage.getItem(this.dataKey)).results.filter(u => u.login.uuid == uuid).length > 0;
       console.log(exist);
-      if(!exist){
+      if (!exist) {
         this.router.navigate(['/error']);
       }
       observer.next(exist);

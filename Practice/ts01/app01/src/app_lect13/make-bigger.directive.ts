@@ -13,14 +13,14 @@ export class MakeBiggerDirective {
   }
 
   ngOnInit() {
-    
+
   }
 
-  @HostListener('dblclick') hostDbClick(){
-    this.renderer.listen(this.elem.nativeElement, 'click', (event) => {
-      this.fontSize += 2;
-      console.log(this.fontSize);
-      this.renderer.setStyle(this.elem.nativeElement, 'font-size', this.fontSize + 'px');
-    })
+  @HostListener('dblclick') hostDbClick() {
+    // this.renderer.listen(this.elem.nativeElement, 'click', (event) => {
+    this.fontSize += 2;
+    console.log(this.fontSize);
+    this.renderer.setStyle(this.elem.nativeElement, 'font-size', this.fontSize + 'px');
+    // })
   }
 }

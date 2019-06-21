@@ -1,43 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// use FormsModule Only when using Template Driven Forms
+import { FormsModule } from '@angular/forms';
+// use ReactiveFormsModule Only when using Template Driven Forms
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ErrorComponent } from './error/error.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProtectedComponent } from './protected/protected.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AuthGuard } from './auth.guard';
-
-const app_routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'error', component: ErrorComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: SignupComponent },
-  { path: 'protected', component: ProtectedComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'home' }];
+import { TemplateDrivenComponent } from "./template-driven/template-driven.component";
+import { DataDrivenComponent } from "./data-driven/data-driven.component";
+import { SComponent } from './s/s.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ErrorComponent,
-    LoginComponent,
-    SignupComponent,
-    ProtectedComponent
+    TemplateDrivenComponent,
+    DataDrivenComponent,
+    SComponent
   ],
+  // to use Forms we must have FormsModule OR ReactiveFormsModule Here
   imports: [
     BrowserModule,
-    HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(app_routes)
+    ReactiveFormsModule
   ],
-  providers: [AuthGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

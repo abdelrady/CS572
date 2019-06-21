@@ -11,7 +11,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 export class CounterComponent implements OnInit {
 
   @Input() counter;
-  @Output() counterChange;
+  @Output() counterChange : EventEmitter;
   
   constructor() {
     this.counterChange = new EventEmitter();

@@ -2,15 +2,24 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  template: `Root App<br/>
-  <a [routerLink]="['login']">Login</a><br/><br/>
-  <a [routerLink]="['register']">Register</a><br/><br/>
-  <router-outlet class="container"></router-outlet>
-`,
-styleUrls: [
-  "../../node_modules/bootstrap/dist/css/bootstrap.min.css"
-]
+  template: `
+  <div class="container">
+    <!--div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1>Template Driven Form</h1>
+        <template-driven></template-driven>
+        <hr>
+      </div>
+    </div-->
+    <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Data Driven Form</h1>
+      <data-driven></data-driven>
+      <hr>
+    </div>
+  </div>
+</div>`
 })
 export class AppComponent {
-  title = 'Lab 14 app';
+  title = 'app works!';
 }
